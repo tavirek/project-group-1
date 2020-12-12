@@ -16,7 +16,7 @@ public class CourseController {
         this.repository = repository;
     }
 
-    @PostMapping
+    @PostMapping("/course")
     void addCourse(@RequestBody CourseDTO course) {
         repository.save(course(course));
     }

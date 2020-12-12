@@ -13,7 +13,7 @@ public class TrainerController {
         this.repository = repository;
     }
 
-    @PostMapping
+    @PostMapping("/trainer")
     void addTrainer(TrainerDTO trainerDTO){
         Trainer trainer = new Trainer();
         trainer.setPesel(trainerDTO.getPesel());
