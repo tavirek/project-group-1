@@ -10,13 +10,12 @@ import javax.persistence.Id;
 public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
     private String name;
     private String surname;
-    private String pesel;
+    private Long pesel;
 
-    public Trainer(String name, String surname, String pesel) {
+    public Trainer(String name, String surname, Long pesel) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
@@ -38,11 +37,11 @@ public class Trainer {
         this.surname = surname;
     }
 
-    public String getPesel() {
+    public Long getPesel() {
         return pesel;
     }
 
-    public void setPesel(String pesel) {
+    public void setPesel(Long pesel) {
         this.pesel = pesel;
     }
 

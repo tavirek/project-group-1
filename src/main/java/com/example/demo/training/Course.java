@@ -6,16 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Courses {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
     private String title;
-    private String duration;
+    private int duration;
     private String description;
 
-    public Courses(String title, String duration) {
+    public Course(String title, int duration) {
         this.title = title;
         this.duration = duration;
     }
@@ -28,11 +27,11 @@ public class Courses {
         this.title = title;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
