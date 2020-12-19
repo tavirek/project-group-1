@@ -3,27 +3,22 @@ package com.example.demo.contollers;
 import com.example.demo.repository.CoursesRepository;
 import com.example.demo.course.Course;
 import com.example.demo.course.CourseDTO;
+import com.example.demo.services.CourseService;
+import com.example.demo.services.TrainerService;
+import com.example.demo.trainer.TrainerDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/course")
 public class CourseController {
-    private CoursesRepository repository;
+    private final CourseService courseService;
 
-    public CourseController(CoursesRepository repository) {
-        this.repository = repository;
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
     }
 
     @PostMapping
-    void addCourse(@RequestBody CourseDTO course) {
-        repository.save(course(course));
-    }
-
-    private Course course(CourseDTO courseDTO) {
-        Course course = new Course();
-        course.setTitle(courseDTO.getTitle());
-        course.setDuration(courseDTO.getDuration());
-        course.setDescription(courseDTO.getDescription());
-        return course;
+    void addCourse(@RequestBody CourseDTO courseDTO) {
+        courseService.addCourse(courseDTO);
     }
 }

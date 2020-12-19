@@ -1,28 +1,26 @@
 package com.example.demo.contollers;
 
 import com.example.demo.repository.TrainerRepository;
+import com.example.demo.services.TrainerService;
 import com.example.demo.trainer.Trainer;
 import com.example.demo.trainer.TrainerDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/trainer")
 public class TrainerController {
 
-    private final TrainerRepository repository;
+    private final TrainerService trainerService;
 
-
-    public TrainerController(TrainerRepository repository) {
-        this.repository = repository;
+    public TrainerController(TrainerService trainerService) {
+        this.trainerService = trainerService;
     }
 
-    @PostMapping("/trainer")
-    void addTrainer(TrainerDTO trainerDTO){
-        Trainer trainer = new Trainer();
-        trainer.setPesel(trainerDTO.getPesel());
-        trainer.setName(trainerDTO.getName());
-        trainer.setSurname(trainerDTO.getSurname());
-        repository.save(trainer);
+    @PostMapping
+    public void addTrainer(@RequestBody TrainerDTO trainerDTO) {
+        trainerService.addTrainer(trainerDTO);
     }
+
 }
 
 
