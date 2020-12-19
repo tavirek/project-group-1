@@ -29,7 +29,7 @@ class ProjectGroup1ApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    void contextLoads() {
+    void testRepository() {
         Course course1 = new Course("course1", 5);
         Course course2 = new Course("course2", 6);
         Course course3 = new Course("course3", 7);
@@ -39,7 +39,8 @@ class ProjectGroup1ApplicationTests {
         Course savedCourse3 = coursesRepository.save(course3);
 
         List<Course> allCourses = coursesRepository.findAll();
-        System.out.println("Wszystkie kursy: " + allCourses);
         assertThat(allCourses).isNotEmpty();
     }
+
+
 }
