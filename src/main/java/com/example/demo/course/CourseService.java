@@ -1,9 +1,8 @@
-package com.example.demo.services;
+package com.example.demo.course;
 
-import com.example.demo.course.Course;
-import com.example.demo.course.CourseDTO;
-import com.example.demo.repository.CoursesRepository;
 import org.springframework.context.annotation.Configuration;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 public class CourseService {
@@ -24,5 +23,20 @@ public class CourseService {
         course.setDuration(courseDTO.getDuration());
         course.setDescription(courseDTO.getDescription());
         return course;
+    }
+
+    private CourseDTO courseDTO(Course course) {
+        CourseDTO courseDTO = new CourseDTO();
+        courseDTO.setTitle((course.getTitle()));
+        courseDTO.setDuration(course.getDuration());
+        courseDTO.setDescription(course.getDescription());
+        return courseDTO;
+    }
+
+    public List<CourseDTO> findAll() {
+        List<Course> all = coursesRepository.findAll();
+        return all.stream()
+                .map(this::courseDTO)
+                .collect(Collectors.toList());
     }
 }

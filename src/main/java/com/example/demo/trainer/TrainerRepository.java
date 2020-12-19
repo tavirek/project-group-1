@@ -1,6 +1,5 @@
-package com.example.demo.repository;
+package com.example.demo.trainer;
 
-import com.example.demo.trainer.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TrainerRepository extends JpaRepository<Trainer,Long> {

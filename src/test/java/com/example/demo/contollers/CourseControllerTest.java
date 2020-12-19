@@ -2,7 +2,8 @@ package com.example.demo.contollers;
 
 import com.example.demo.course.Course;
 import com.example.demo.course.CourseDTO;
-import com.example.demo.repository.CoursesRepository;
+import com.example.demo.course.CoursesRepository;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,18 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 class CourseControllerTest {
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
 
@@ -44,5 +49,16 @@ class CourseControllerTest {
         assertEquals(course.getDescription(), courseDescription);
         assertEquals(course.getDuration(), courseDuration);
         assertEquals(course.getTitle(),courseTitle);
+
+        MvcResult result = mockMvc.perform(get("/course"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        List<CourseDTO> actual = objectMapper.readValue(result.getResponse()
+                .getContentAsString(), new TypeReference<List<CourseDTO>>() {
+        });
+
+        assertEquals(actual.get(0).getDescription(), courseDescription);
+        assertEquals(actual.get(0).getDuration(), courseDuration);
     }
 }

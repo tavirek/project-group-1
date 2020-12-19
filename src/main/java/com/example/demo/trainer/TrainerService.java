@@ -1,10 +1,6 @@
-package com.example.demo.services;
+package com.example.demo.trainer;
 
-import com.example.demo.repository.TrainerRepository;
-import com.example.demo.trainer.Trainer;
-import com.example.demo.trainer.TrainerDTO;
 import org.springframework.context.annotation.Configuration;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,8 +1,7 @@
-package com.example.demo.contollers;
+package com.example.demo.course;
 
-import com.example.demo.course.CourseDTO;
-import com.example.demo.services.CourseService;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/course")
@@ -16,5 +15,10 @@ public class CourseController {
     @PostMapping
     void addCourse(@RequestBody CourseDTO courseDTO) {
         courseService.addCourse(courseDTO);
+    }
+
+    @GetMapping
+    public List<CourseDTO> allCourses(){
+        return courseService.findAll();
     }
 }

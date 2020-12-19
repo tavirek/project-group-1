@@ -10,9 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -30,9 +28,12 @@ class TrainerControllerTest {
     public void statusIsOkWhenPostCall() throws Exception {
         //given
         TrainerDTO trainerDTO = new TrainerDTO();
-        trainerDTO.setName("imie");
-        trainerDTO.setSurname("nazwisko");
-        trainerDTO.setPesel((long) 1234567876);
+        String trainerName = "imie";
+        trainerDTO.setName(trainerName);
+        String trainerSurname = "nazwisko";
+        trainerDTO.setSurname(trainerSurname);
+        long trainerPesel = 1234567876;
+        trainerDTO.setPesel(trainerPesel);
 
         mockMvc.perform(post("/trainer").contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(trainerDTO))).andExpect(status().isOk());
@@ -44,8 +45,8 @@ class TrainerControllerTest {
         List<TrainerDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<List<TrainerDTO>>() {
         });
 
-        assertEquals(actual.get(0).getName(), "imie");
-        assertEquals(actual.get(0).getSurname(), "nazwisko");
-        assertEquals(actual.get(0).getPesel(), 1234567876);
+        assertEquals(actual.get(0).getName(),trainerName);
+        assertEquals(actual.get(0).getSurname(),trainerSurname);
+        assertEquals(actual.get(0).getPesel(),trainerPesel);
     }
 }

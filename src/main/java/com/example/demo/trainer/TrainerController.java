@@ -1,7 +1,5 @@
-package com.example.demo.contollers;
+package com.example.demo.trainer;
 
-import com.example.demo.services.TrainerService;
-import com.example.demo.trainer.TrainerDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
