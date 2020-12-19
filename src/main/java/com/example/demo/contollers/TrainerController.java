@@ -1,7 +1,9 @@
-package com.example.demo.training;
+package com.example.demo.contollers;
 
+import com.example.demo.repository.TrainerRepository;
+import com.example.demo.trainer.Trainer;
+import com.example.demo.trainer.TrainerDTO;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 public class TrainerController {
@@ -13,7 +15,7 @@ public class TrainerController {
         this.repository = repository;
     }
 
-    @PostMapping
+    @PostMapping("/trainer")
     void addTrainer(TrainerDTO trainerDTO){
         Trainer trainer = new Trainer();
         trainer.setPesel(trainerDTO.getPesel());
