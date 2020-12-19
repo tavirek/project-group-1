@@ -28,6 +28,5 @@ class TrainerControllerTest {
 
         mockMvc.perform(post("/trainer").contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(trainerDTO))).andExpect(status().isOk());
-
     }
 }

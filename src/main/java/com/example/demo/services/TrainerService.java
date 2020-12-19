@@ -10,7 +10,6 @@ public class TrainerService {
 
     private final TrainerRepository trainerRepository;
 
-
     public TrainerService(TrainerRepository trainerRepository) {
         this.trainerRepository = trainerRepository;
     }
@@ -26,6 +25,4 @@ public class TrainerService {
         trainer.setPesel(trainerDTO.getPesel());
         return trainer;
     }
-
-
 }
