@@ -13,7 +13,6 @@ public class CourseDTO {
     }
 
     public CourseDTO() {
-
     }
 
     public String getTitle() {

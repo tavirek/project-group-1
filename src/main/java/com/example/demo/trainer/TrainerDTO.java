@@ -13,7 +13,6 @@ public class TrainerDTO {
     }
 
     public TrainerDTO() {
-
     }
 
     public String getName() {

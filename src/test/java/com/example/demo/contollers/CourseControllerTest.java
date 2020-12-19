@@ -22,9 +22,6 @@ class CourseControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private CourseController courseController;
-
-    @Autowired
     private CoursesRepository coursesRepository;
 
     @Test

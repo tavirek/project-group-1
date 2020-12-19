@@ -24,8 +24,5 @@ public class CourseService {
         course.setDuration(courseDTO.getDuration());
         course.setDescription(courseDTO.getDescription());
         return course;
-
     }
 }
-
-

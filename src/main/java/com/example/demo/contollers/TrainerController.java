@@ -18,12 +18,4 @@ public class TrainerController {
     public void addTrainer(@RequestBody TrainerDTO trainerDTO) {
         trainerService.addTrainer(trainerDTO);
     }
-
 }
-
-
-
-
-
-
-
