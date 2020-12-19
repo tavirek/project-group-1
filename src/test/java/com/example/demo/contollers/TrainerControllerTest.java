@@ -22,8 +22,8 @@ class TrainerControllerTest {
     public void statusIsOkWhenPostCall() throws Exception {
         //given
         TrainerDTO trainerDTO = new TrainerDTO();
-        trainerDTO.setName("Pawel");
-        trainerDTO.setSurname("Lach");
+        trainerDTO.setName("imie");
+        trainerDTO.setSurname("nazwisko");
         trainerDTO.setPesel((long) 1234567876);
 
         mockMvc.perform(post("/trainer").contentType(MediaType.APPLICATION_JSON)
