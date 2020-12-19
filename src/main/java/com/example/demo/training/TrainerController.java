@@ -1,5 +1,6 @@
 package com.example.demo.training;
 
+import com.example.demo.repository.TrainerRepository;
 import org.springframework.web.bind.annotation.*;
 
 
