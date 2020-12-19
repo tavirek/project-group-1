@@ -1,27 +1,19 @@
-package com.example.demo.training;
+package com.example.demo.trainer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-
-public class Trainer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class TrainerDTO {
     private Long id;
     private String name;
     private String surname;
     private Long pesel;
 
-    public Trainer() {
-    }
-
-    public Trainer(String name, String surname, Long pesel) {
+    public TrainerDTO(String name, String surname, Long pesel) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
+    }
+
+    public TrainerDTO() {
+
     }
 
     public String getName() {

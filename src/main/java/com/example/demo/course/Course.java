@@ -1,18 +1,23 @@
-package com.example.demo.training;
+package com.example.demo.course;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class CourseDTO {
-
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private int duration;
     private String description;
 
-    public CourseDTO(String title, int duration) {
+    public Course() {
+    }
+
+    public Course(String title, int duration) {
         this.title = title;
         this.duration = duration;
     }
@@ -41,6 +46,7 @@ public class CourseDTO {
         this.description = description;
     }
 
+    @Override
     public String toString() {
         return "Courses{" +
                 "id=" + id +

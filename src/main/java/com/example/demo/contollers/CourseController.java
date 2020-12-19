@@ -1,15 +1,12 @@
-package com.example.demo.training;
-
+package com.example.demo.contollers;
 
 import com.example.demo.repository.CoursesRepository;
+import com.example.demo.course.Course;
+import com.example.demo.course.CourseDTO;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
+@RequestMapping("/course")
 public class CourseController {
     private CoursesRepository repository;
 
@@ -17,7 +14,7 @@ public class CourseController {
         this.repository = repository;
     }
 
-    @PostMapping("/course")
+    @PostMapping
     void addCourse(@RequestBody CourseDTO course) {
         repository.save(course(course));
     }
@@ -29,5 +26,4 @@ public class CourseController {
         course.setDescription(courseDTO.getDescription());
         return course;
     }
-
 }
