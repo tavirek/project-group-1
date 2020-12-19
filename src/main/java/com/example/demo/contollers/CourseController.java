@@ -1,11 +1,7 @@
 package com.example.demo.contollers;
 
-import com.example.demo.repository.CoursesRepository;
-import com.example.demo.course.Course;
 import com.example.demo.course.CourseDTO;
 import com.example.demo.services.CourseService;
-import com.example.demo.services.TrainerService;
-import com.example.demo.trainer.TrainerDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
