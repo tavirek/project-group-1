@@ -1,11 +1,10 @@
 package com.example.demo.trainer;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/trainer")
 public class TrainerController {
 

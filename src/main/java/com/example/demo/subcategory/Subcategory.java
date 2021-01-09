@@ -1,33 +1,30 @@
-package com.example.demo.categories;
-
+package com.example.demo.subcategory;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Categories {
-
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nameCategories;
+    private String name;
     private String description;
 
-
-    public Categories(String nameCategories) {
-        this.nameCategories = nameCategories;
+    public Subcategory(String name) {
+        this.name = name;
     }
 
-    public Categories() {
+    public Subcategory() {
     }
 
-    public String getNameCategories() {
-        return nameCategories;
+    public String getName() {
+        return name;
     }
 
-    public void setNameCategories(String nameCategories) {
-        this.nameCategories = nameCategories;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -40,10 +37,9 @@ public class Categories {
 
     @Override
     public String toString() {
-        return "Categories{" +
-                "nameCategories='" + nameCategories + '\'' +
+        return "Subcategory{" +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
 }
-

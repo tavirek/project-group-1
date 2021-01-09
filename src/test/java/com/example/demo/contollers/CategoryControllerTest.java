@@ -1,8 +1,7 @@
 package com.example.demo.contollers;
-
-import com.example.demo.categories.Categories;
-import com.example.demo.categories.CategoriesDTO;
-import com.example.demo.categories.CategoriesRepository;
+import com.example.demo.category.Category;
+import com.example.demo.category.CategoryDTO;
+import com.example.demo.category.CategoryRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -12,9 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -22,44 +19,44 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class CategoriesControllerTest {
+class CategoryControllerTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private CategoriesRepository categoriesRepository;
+    private CategoryRepository categoryRepository;
 
     @Test
-    public void statusIsOkWhenPostCall() throws Exception{
+    public void shouldStatusIsOkWhenPostCall() throws Exception {
 
-        CategoriesDTO categoriesDTO = new CategoriesDTO();
+        //given
+        CategoryDTO categoryDTO = new CategoryDTO();
         String description = "cos";
-        String nameCategories = "xx";
+        String name = "xx";
 
-        categoriesDTO.setDescription(description);
-        categoriesDTO.setNameCategories(nameCategories);
+        //when
+        categoryDTO.setDescription(description);
+        categoryDTO.setName(name);
 
-        mockMvc.perform(post("/categories").contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(categoriesDTO))).andExpect(status().isOk());
+        mockMvc.perform(post("/category").contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(categoryDTO))).andExpect(status().isOk());
 
-        assertEquals(1,categoriesRepository.count());
-        Categories categories = categoriesRepository.findAll().get(0);
+        //then
+        assertEquals(1, categoryRepository.count());
+        Category categories = categoryRepository.findAll().get(0);
         assertEquals(categories.getDescription(), description);
-        assertEquals(categories.getNameCategories(),nameCategories);
+        assertEquals(categories.getName(), name);
 
-        MvcResult result = mockMvc.perform(get("/categories"))
+        MvcResult result = mockMvc.perform(get("/category"))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        List<CategoriesDTO> actual = objectMapper.readValue(result.getResponse()
-                .getContentAsString(), new TypeReference<List<CategoriesDTO>>() {
+        List<CategoryDTO> actual = objectMapper.readValue(result.getResponse()
+                .getContentAsString(), new TypeReference<List<CategoryDTO>>() {
         });
 
         assertEquals(actual.get(0).getDescription(), description);
     }
-
-
-
 }

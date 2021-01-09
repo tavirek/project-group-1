@@ -1,27 +1,25 @@
-package com.example.demo.categories;
-
+package com.example.demo.category;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/categories")
-public class CategoriesController {
+@RequestMapping("/category")
+ class CategoryController {
 
-    private final CategoriesService categoriesService;
+    private final CategoryService categoriesService;
 
-    public CategoriesController(CategoriesService categoriesService) {
+    CategoryController(CategoryService categoriesService) {
         this.categoriesService = categoriesService;
     }
 
     @PostMapping
-    void addCategories(@RequestBody CategoriesDTO categoriesDTO){
+    void addCategories(@RequestBody CategoryDTO categoriesDTO){
         categoriesService.addCategories(categoriesDTO);
     }
 
     @GetMapping
-    public List<CategoriesDTO> allCategories(){
+    List<CategoryDTO> allCategories(){
         return categoriesService.findAll();
     }
 }
