@@ -1,22 +1,22 @@
-package com.example.demo.subcategories;
+package com.example.demo.subcategory;
 
-public class SubcategoriesDTO {
+public class SubcategoryDTO {
     private Long id;
     private String name;
     private String description;
 
-    public SubcategoriesDTO(String name) {
+    public SubcategoryDTO(String name) {
         this.name = name;
     }
 
-    public SubcategoriesDTO() {
+    public SubcategoryDTO() {
     }
 
-    public String getNameSubcategories() {
+    public String getNameSubcategory() {
         return name;
     }
 
-    public void setNameSubcategories(String name) {
+    public void setNameSubcategory(String name) {
         this.name = name;
     }
 
@@ -29,7 +29,7 @@ public class SubcategoriesDTO {
     }
 
     public String toString() {
-        return "Subcourses{" +
+        return "SubCategory{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

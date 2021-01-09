@@ -1,8 +1,8 @@
 package com.example.demo.contollers;
 
-import com.example.demo.subcategories.Subcategories;
-import com.example.demo.subcategories.SubcategoriesDTO;
-import com.example.demo.subcategories.SubcategoriesRepository;
+import com.example.demo.subcategory.Subcategory;
+import com.example.demo.subcategory.SubcategoryDTO;
+import com.example.demo.subcategory.SubcategoryRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -27,34 +27,34 @@ class SubcategoriesControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private SubcategoriesRepository subcategoriesRepository;
+    private SubcategoryRepository subcategoryRepository;
 
     @Test
 
     public void shouldAddSubcategories() throws Exception {
         //given
 
-        SubcategoriesDTO subcategoriesDTO = new SubcategoriesDTO();
+        SubcategoryDTO subcategoriesDTO = new SubcategoryDTO();
         String descriptions = "cos";
         String nameSubcategories = "xx";
 
         subcategoriesDTO.setDescription(descriptions);
-        subcategoriesDTO.setNameSubcategories(nameSubcategories);
+        subcategoriesDTO.setNameSubcategory(nameSubcategories);
 
         mockMvc.perform(post("/subcategories").contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(subcategoriesDTO))).andExpect(status().isOk());
 
-        assertEquals(1, subcategoriesRepository.count());
-        Subcategories subcategories = subcategoriesRepository.findAll().get(0);
+        assertEquals(1, subcategoryRepository.count());
+        Subcategory subcategories = subcategoryRepository.findAll().get(0);
         assertEquals(subcategories.getDescription(), descriptions);
-        assertEquals(subcategories.getNameSubcategories(), nameSubcategories);
+        assertEquals(subcategories.getNameSubcategory(), nameSubcategories);
 
         MvcResult result = mockMvc.perform(get("/subcategories"))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        List<SubcategoriesDTO> actual = objectMapper.readValue(result.getResponse()
-                .getContentAsString(), new TypeReference<List<SubcategoriesDTO>>() {
+        List<SubcategoryDTO> actual = objectMapper.readValue(result.getResponse()
+                .getContentAsString(), new TypeReference<List<SubcategoryDTO>>() {
         });
     }
 }
