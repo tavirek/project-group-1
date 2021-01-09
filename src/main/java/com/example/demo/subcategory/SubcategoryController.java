@@ -1,17 +1,21 @@
 package com.example.demo.subcategory;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/subcategories")
-public class SubcategoryController {
+@RequestMapping("/subcategory")
+class SubcategoryController {
 
     private final SubcategoryService subcategoryService;
 
-    public SubcategoryController(SubcategoryService subcategoryService) {
+    SubcategoryController(SubcategoryService subcategoryService) {
         this.subcategoryService = subcategoryService;
     }
 
@@ -21,7 +25,7 @@ public class SubcategoryController {
     }
 
     @GetMapping
-    public List<SubcategoryDTO> allSubcategory() {
+    List<SubcategoryDTO> allSubcategory() {
         return subcategoryService.findAll();
     }
 }

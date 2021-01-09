@@ -1,5 +1,4 @@
 package com.example.demo.category;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,23 +10,22 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nameCategory;
+    private String name;
     private String description;
 
-
-    public Category(String nameCategories) {
-        this.nameCategory = nameCategories;
+    public Category(String name) {
+        this.name = name;
     }
 
     public Category() {
     }
 
-    public String getNameCategory() {
-        return nameCategory;
+    public String getName() {
+        return name;
     }
 
-    public void setNameCategory(String nameCategory) {
-        this.nameCategory = nameCategory;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -41,7 +39,7 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-                "nameCategory='" + nameCategory + '\'' +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

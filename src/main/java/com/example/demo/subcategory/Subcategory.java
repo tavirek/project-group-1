@@ -1,5 +1,4 @@
 package com.example.demo.subcategory;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,6 @@ public class Subcategory {
     private Long id;
     private String nameSubcategory;
     private String description;
-
 
     public Subcategory(String nameSubcategory) {
         this.nameSubcategory = nameSubcategory;

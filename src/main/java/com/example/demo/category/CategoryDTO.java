@@ -16,7 +16,7 @@ public class CategoryDTO {
         return nameCategory;
     }
 
-    public void setNameCategory(String nameCategory) {
+    public void setName(String nameCategory) {
         this.nameCategory = nameCategory;
     }
 

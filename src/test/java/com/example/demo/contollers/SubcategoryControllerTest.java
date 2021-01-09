@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class SubcategoriesControllerTest {
+class SubcategoryControllerTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
@@ -30,26 +30,26 @@ class SubcategoriesControllerTest {
     private SubcategoryRepository subcategoryRepository;
 
     @Test
-
-    public void shouldAddSubcategories() throws Exception {
+    public void shouldStatusIsOkWhenPostCall() throws Exception {
         //given
-
         SubcategoryDTO subcategoriesDTO = new SubcategoryDTO();
         String descriptions = "cos";
         String nameSubcategories = "xx";
 
+        //when
         subcategoriesDTO.setDescription(descriptions);
         subcategoriesDTO.setNameSubcategory(nameSubcategories);
 
-        mockMvc.perform(post("/subcategories").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/subcategory").contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(subcategoriesDTO))).andExpect(status().isOk());
 
+        //then
         assertEquals(1, subcategoryRepository.count());
         Subcategory subcategories = subcategoryRepository.findAll().get(0);
         assertEquals(subcategories.getDescription(), descriptions);
         assertEquals(subcategories.getNameSubcategory(), nameSubcategories);
 
-        MvcResult result = mockMvc.perform(get("/subcategories"))
+        MvcResult result = mockMvc.perform(get("/subcategory"))
                 .andExpect(status().isOk())
                 .andReturn();
 
