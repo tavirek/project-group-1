@@ -12,11 +12,11 @@ public class SubcategoryDTO {
     public SubcategoryDTO() {
     }
 
-    public String getNameSubcategory() {
+    public String getName() {
         return name;
     }
 
-    public void setNameSubcategory(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

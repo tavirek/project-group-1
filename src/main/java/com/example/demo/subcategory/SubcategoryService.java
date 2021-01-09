@@ -16,14 +16,14 @@ public class SubcategoryService {
 
     private Subcategory subcategory(SubcategoryDTO subcategoryDTO) {
         Subcategory subcategory = new Subcategory();
-        subcategory.setName(subcategoryDTO.getNameSubcategory());
+        subcategory.setName(subcategoryDTO.getName());
         subcategory.setDescription(subcategoryDTO.getDescription());
         return subcategory;
     }
 
     private SubcategoryDTO subcategoryDTO(Subcategory subcategory) {
         SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
-        subcategoryDTO.setNameSubcategory(subcategory.getName());
+        subcategoryDTO.setName(subcategory.getName());
         subcategoryDTO.setDescription(subcategory.getDescription());
         return subcategoryDTO;
     }
