@@ -3,8 +3,8 @@ package com.example.demo.course;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/course")
 public class CourseController {
     private final CourseService courseService;

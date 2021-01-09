@@ -44,7 +44,7 @@ class CourseControllerTest {
         mockMvc.perform(post("/course").contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(courseDTO))).andExpect(status().isOk());
 
-        assertEquals(1,coursesRepository.count());
+        assertEquals(1, coursesRepository.count());
         Course course = coursesRepository.findAll().get(0);
         assertEquals(course.getDescription(), courseDescription);
         assertEquals(course.getDuration(), courseDuration);
