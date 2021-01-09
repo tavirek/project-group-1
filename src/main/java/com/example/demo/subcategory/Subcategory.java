@@ -9,22 +9,22 @@ public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nameSubcategory;
+    private String name;
     private String description;
 
-    public Subcategory(String nameSubcategory) {
-        this.nameSubcategory = nameSubcategory;
+    public Subcategory(String name) {
+        this.name = name;
     }
 
     public Subcategory() {
     }
 
-    public String getNameSubcategory() {
-        return nameSubcategory;
+    public String getName() {
+        return name;
     }
 
-    public void setNameSubcategory(String nameSubcategory) {
-        this.nameSubcategory = nameSubcategory;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -38,7 +38,7 @@ public class Subcategory {
     @Override
     public String toString() {
         return "Subcategory{" +
-                "nameSubcategory='" + nameSubcategory + '\'' +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

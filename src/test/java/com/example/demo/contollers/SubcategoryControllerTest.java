@@ -47,7 +47,7 @@ class SubcategoryControllerTest {
         assertEquals(1, subcategoryRepository.count());
         Subcategory subcategories = subcategoryRepository.findAll().get(0);
         assertEquals(subcategories.getDescription(), descriptions);
-        assertEquals(subcategories.getNameSubcategory(), nameSubcategories);
+        assertEquals(subcategories.getName(), nameSubcategories);
 
         MvcResult result = mockMvc.perform(get("/subcategory"))
                 .andExpect(status().isOk())
