@@ -15,7 +15,7 @@ import java.util.List;
 
     @PostMapping
     void addCategories(@RequestBody CategoryDTO categoriesDTO){
-        categoriesService.addCategories(categoriesDTO);
+        categoriesService.addCategory(categoriesDTO);
     }
 
     @GetMapping

@@ -12,8 +12,10 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public void addCategories(CategoryDTO categoryDTO) {
-        categoryRepository.save(category(categoryDTO));
+    public void addCategory(CategoryDTO categoryDTO) {
+        if(categoryDTO.getDescription().length() < 50 ) {
+            categoryRepository.save(category(categoryDTO));
+        }
     }
 
     private Category category(CategoryDTO categoryDTO) {

@@ -11,7 +11,9 @@ public class SubcategoryService {
     }
 
     public void addSubcategory(SubcategoryDTO subcategoryDTO) {
-        subcategoryRepository.save(subcategory(subcategoryDTO));
+        if (subcategoryDTO.getDescription().length() < 200) {
+            subcategoryRepository.save(subcategory(subcategoryDTO));
+        }
     }
 
     private Subcategory subcategory(SubcategoryDTO subcategoryDTO) {

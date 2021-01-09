@@ -38,7 +38,7 @@ class SubcategoryControllerTest {
 
         //when
         subcategoriesDTO.setDescription(descriptions);
-        subcategoriesDTO.setNameSubcategory(nameSubcategories);
+        subcategoriesDTO.setName(nameSubcategories);
 
         mockMvc.perform(post("/subcategory").contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(subcategoriesDTO))).andExpect(status().isOk());
