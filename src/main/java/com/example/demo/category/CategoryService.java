@@ -20,7 +20,7 @@ public class CategoryService {
 
     private Category category(CategoryDTO categoryDTO) {
         Category category = new Category();
-        category.setName(categoryDTO.getNameCategory());
+        category.setName(categoryDTO.getName());
         category.setDescription(categoryDTO.getDescription());
         return category;
     }
