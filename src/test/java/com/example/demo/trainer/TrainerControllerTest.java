@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 class TrainerControllerTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -54,7 +56,7 @@ class TrainerControllerTest {
 
     @Test
     public void shouldTheSameTrainerIsNotAdded() throws Exception {
-//given
+        //given
         TrainerDTO trener1 = new TrainerDTO("imie", "nazwisko", 1234567876L);
         TrainerDTO trener2 = new TrainerDTO("imie2", "nazwisko2", 1234567876L);
 
@@ -63,7 +65,7 @@ class TrainerControllerTest {
                 .content(new ObjectMapper()
                         .writeValueAsString(trener1)))
                 .andExpect(status().isOk());
-//expect
+        //expect
         mockMvc.perform(post("/trainer")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper()
