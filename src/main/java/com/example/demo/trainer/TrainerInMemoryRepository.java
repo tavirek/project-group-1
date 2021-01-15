@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class TrainerInMemoryRepository implements TrainerRepository {
 
@@ -11,16 +12,17 @@ public class TrainerInMemoryRepository implements TrainerRepository {
 
     @Override
     public Optional<Trainer> findByPesel(Long pesel) {
-        return Optional.empty();
+        return trainers.values().stream().filter(trainer -> trainer.getPesel().equals(pesel)).findFirst();
     }
 
     @Override
     public Trainer save(Trainer trainer) {
-        return null;
+         trainers.put((long)trainers.size(), trainer);
+        return trainer;
     }
 
     @Override
     public List<Trainer> findAll() {
-        return null;
+        return trainers.values().stream().collect(Collectors.toList());
     }
 }
