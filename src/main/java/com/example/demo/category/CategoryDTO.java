@@ -2,22 +2,22 @@ package com.example.demo.category;
 
 public class CategoryDTO {
 
-    private String nameCategory;
+    private String name;
     private String description;
 
-    public CategoryDTO(String nameCategory) {
-        this.nameCategory = nameCategory;
+    public CategoryDTO(String name) {
+        this.name = name;
     }
 
     public CategoryDTO() {
     }
 
-    public String getNameCategory() {
-        return nameCategory;
+    public String getName() {
+        return name;
     }
 
-    public void setName(String nameCategory) {
-        this.nameCategory = nameCategory;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -31,7 +31,7 @@ public class CategoryDTO {
     @Override
     public String toString() {
         return "CategoryDTO{" +
-                "nameCategory='" + nameCategory + '\'' +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

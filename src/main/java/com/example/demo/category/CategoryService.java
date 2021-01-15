@@ -12,13 +12,19 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public void addCategories(CategoryDTO categoryDTO) {
-        categoryRepository.save(category(categoryDTO));
+    public boolean addCategory(CategoryDTO categoryDTO) {
+        if(categoryDTO.getDescription().length() < 50 ) {
+            categoryRepository.save(category(categoryDTO));
+            return true;
+        } else {
+            System.out.println("Nazwa nie może być dłuższa niż 50 znaków");
+            return false;
+        }
     }
 
     private Category category(CategoryDTO categoryDTO) {
         Category category = new Category();
-        category.setName(categoryDTO.getNameCategory());
+        category.setName(categoryDTO.getName());
         category.setDescription(categoryDTO.getDescription());
         return category;
     }

@@ -1,4 +1,4 @@
-package com.example.demo.contollers;
+package com.example.demo.trainer;
 
 import com.example.demo.trainer.TrainerDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -10,14 +10,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 class TrainerControllerTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -42,11 +46,30 @@ class TrainerControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        List<TrainerDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<List<TrainerDTO>>() {
+        List<TrainerDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<>() {
         });
 
-        assertEquals(actual.get(0).getName(),trainerName);
-        assertEquals(actual.get(0).getSurname(),trainerSurname);
-        assertEquals(actual.get(0).getPesel(),trainerPesel);
+        assertEquals(actual.get(0).getName(), trainerName);
+        assertEquals(actual.get(0).getSurname(), trainerSurname);
+        assertEquals(actual.get(0).getPesel(), trainerPesel);
+    }
+
+    @Test
+    public void shouldTheSameTrainerIsNotAdded() throws Exception {
+        //given
+        TrainerDTO trener1 = new TrainerDTO("imie", "nazwisko", 1234567876L);
+        TrainerDTO trener2 = new TrainerDTO("imie2", "nazwisko2", 1234567876L);
+
+        mockMvc.perform(post("/trainer")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper()
+                        .writeValueAsString(trener1)))
+                .andExpect(status().isOk());
+        //expect
+        mockMvc.perform(post("/trainer")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper()
+                        .writeValueAsString(trener2)))
+                .andExpect(status().isConflict());
     }
 }

@@ -10,8 +10,14 @@ public class SubcategoryService {
         this.subcategoryRepository = subcategoryRepository;
     }
 
-    public void addSubcategory(SubcategoryDTO subcategoryDTO) {
-        subcategoryRepository.save(subcategory(subcategoryDTO));
+    public boolean addSubcategory(SubcategoryDTO subcategoryDTO) {
+        if (subcategoryDTO.getDescription().length() < 200) {
+            subcategoryRepository.save(subcategory(subcategoryDTO));
+            return true;
+        } else  {
+            System.out.println("Opis nie może być dłuższy niż 200 znaków");
+            return false;
+        }
     }
 
     private Subcategory subcategory(SubcategoryDTO subcategoryDTO) {

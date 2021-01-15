@@ -1,5 +1,7 @@
 package com.example.demo.trainer;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -15,8 +17,13 @@ public class TrainerController {
     }
 
     @PostMapping
-    public void addTrainer(@RequestBody TrainerDTO trainerDTO) {
-        trainerService.addTrainer(trainerDTO);
+    public ResponseEntity addTrainer(@RequestBody TrainerDTO trainerDTO) {
+        boolean success = trainerService.addTrainer(trainerDTO);
+        if (success) {
+            return ResponseEntity.ok().build();
+        } else {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping

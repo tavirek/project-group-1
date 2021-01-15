@@ -14,9 +14,16 @@ public class TrainerService {
         this.trainerRepository = trainerRepository;
     }
 
-    public void addTrainer(TrainerDTO trainerDTO){
-        trainerRepository.save(trainer(trainerDTO));
+    public boolean addTrainer(TrainerDTO trainerDTO){
+        if (trainerRepository.findByPesel(trainerDTO.getPesel()).isEmpty()){
+            trainerRepository.save(trainer(trainerDTO));
+            return true;
+        } else {
+            return false;
+        }
     }
+
+
 
     private Trainer trainer(TrainerDTO trainerDTO) {
         Trainer trainer = new Trainer();
