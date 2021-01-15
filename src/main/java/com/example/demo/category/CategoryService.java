@@ -12,9 +12,13 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public void addCategory(CategoryDTO categoryDTO) {
+    public boolean addCategory(CategoryDTO categoryDTO) {
         if(categoryDTO.getDescription().length() < 50 ) {
             categoryRepository.save(category(categoryDTO));
+            return true;
+        } else {
+            System.out.println("Nazwa nie może być dłuższa niż 50 znaków");
+            return false;
         }
     }
 

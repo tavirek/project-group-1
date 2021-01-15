@@ -1,4 +1,4 @@
-package com.example.demo.contollers;
+package com.example.demo.subcategory;
 
 import com.example.demo.subcategory.Subcategory;
 import com.example.demo.subcategory.SubcategoryDTO;
@@ -54,7 +54,7 @@ class SubcategoryControllerTest {
                 .andReturn();
 
         List<SubcategoryDTO> actual = objectMapper.readValue(result.getResponse()
-                .getContentAsString(), new TypeReference<List<SubcategoryDTO>>() {
+                .getContentAsString(), new TypeReference<>() {
         });
     }
 }

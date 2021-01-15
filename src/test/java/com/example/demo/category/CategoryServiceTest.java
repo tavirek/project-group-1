@@ -16,7 +16,7 @@ class CategoryServiceTest {
     private CategoryRepository categoryRepository;
 
     @Test
-    public void shouldAddCategoryDescriptionIsNoLongerThen50Characters() {
+    public void shouldNotAddCategoryDescriptionIsNoLongerThen50Characters() {
         //given
         CategoryDTO categoryDTO = new CategoryDTO();
         String name = "nazwa kategorii";
@@ -35,7 +35,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    public void shouldAddCategoryDescriptionIsLongerThen50Characters() {
+    public void shouldNotAddCategoryDescriptionIsLongerThen50Characters() {
         //given
         CategoryDTO categoryDTO = new CategoryDTO();
         String name = "nazwa kategorii";

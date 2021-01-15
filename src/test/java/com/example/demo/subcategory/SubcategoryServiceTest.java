@@ -15,7 +15,7 @@ class SubcategoryServiceTest {
     private SubcategoryRepository subcategoryRepository ;
 
     @Test
-    public void shouldAddSubcategoryDescriptionIsNoLongerThen200Characters() {
+    public void shouldNotAddSubcategoryDescriptionIsNoLongerThen200Characters() {
         //given
         SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
         String name = "nazwa kategorii";
@@ -34,7 +34,7 @@ class SubcategoryServiceTest {
     }
 
     @Test
-    public void shouldAddSubcategoryDescriptionIsLongerThen200Characters() {
+    public void shouldNotAddSubcategoryDescriptionIsLongerThen200Characters() {
         //given
         SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
         String name = "nazwa kategorii";
