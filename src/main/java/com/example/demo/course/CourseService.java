@@ -35,6 +35,7 @@ public class CourseService {
 
     private CourseDTO courseDTO(Course course) {
         CourseDTO courseDTO = new CourseDTO();
+        courseDTO.setId(course.getId());
         courseDTO.setTitle((course.getTitle()));
         courseDTO.setDuration(course.getDuration());
         courseDTO.setDescription(course.getDescription());

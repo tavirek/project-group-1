@@ -23,4 +23,7 @@ class SubcategoryController {
     List<SubcategoryDTO> allSubcategory() {
         return subcategoryService.findAll();
     }
+
+    @GetMapping(path = "/bycategory/{categoryId}")
+    List<SubcategoryDTO> findAllByCategory(@PathVariable Long categoryId) {return subcategoryService.findAllByCategory(categoryId);}
 }

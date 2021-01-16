@@ -1,14 +1,23 @@
 package com.example.demo.subcategory;
 
+import com.example.demo.category.Category;
+import com.example.demo.category.CategoryRepository;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class SubcategoryService {
     private final SubcategoryRepository subcategoryRepository;
 
-    public SubcategoryService(SubcategoryRepository subcategoryRepository) {
+    private final CategoryRepository categoryRepository;
+
+    public SubcategoryService(SubcategoryRepository subcategoryRepository, CategoryRepository categoryRepository) {
         this.subcategoryRepository = subcategoryRepository;
+        this.categoryRepository = categoryRepository;
     }
+
 
     public boolean addSubcategory(SubcategoryDTO subcategoryDTO) {
         if (subcategoryDTO.getDescription().length() < 200) {
@@ -29,6 +38,7 @@ public class SubcategoryService {
 
     private SubcategoryDTO subcategoryDTO(Subcategory subcategory) {
         SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+        subcategoryDTO.setId(subcategory.getId());
         subcategoryDTO.setName(subcategory.getName());
         subcategoryDTO.setDescription(subcategory.getDescription());
         return subcategoryDTO;
@@ -39,5 +49,13 @@ public class SubcategoryService {
         return all.stream()
                 .map(this::subcategoryDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<SubcategoryDTO> findAllByCategory(Long categoryId) {
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        return category.map(value -> subcategoryRepository.findAllByCategory(value)
+                .stream()
+                .map(this::subcategoryDTO)
+                .collect(Collectors.toList())).orElseGet(ArrayList::new);
     }
 }

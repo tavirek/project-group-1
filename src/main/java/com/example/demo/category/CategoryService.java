@@ -1,6 +1,5 @@
 package com.example.demo.category;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +30,7 @@ public class CategoryService {
 
     private CategoryDTO categoryDTO(Category category) {
         CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setId(category.getId());
         categoryDTO.setName(category.getName());
         categoryDTO.setDescription(category.getDescription());
         return categoryDTO;
