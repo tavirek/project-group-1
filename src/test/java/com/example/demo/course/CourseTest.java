@@ -40,17 +40,21 @@ class CourseTest {
         Course course3 = new Course("sprzedaz ciastek",12,subcategory1);
 
         //when
-        subcategoryRepository.save(subcategory);
-        coursesRepository.save(course);
-        coursesRepository.save(course1);
-        subcategoryRepository.save(subcategory1);
-        coursesRepository.save(course2);
-        coursesRepository.save(course3);
+        init(subcategory, course, course1, subcategory1, course2, course3);
 
         //then
         Optional<Subcategory> it = subcategoryRepository.findOneByName("IT");
         List<CourseDTO> itCourses = courseService.findAllBySubcategory(it.get().getId());
         assertEquals(2,itCourses.size());
 
+    }
+
+    private void init(Subcategory subcategory, Course course, Course course1, Subcategory subcategory1, Course course2, Course course3) {
+        subcategoryRepository.save(subcategory);
+        coursesRepository.save(course);
+        coursesRepository.save(course1);
+        subcategoryRepository.save(subcategory1);
+        coursesRepository.save(course2);
+        coursesRepository.save(course3);
     }
 }
