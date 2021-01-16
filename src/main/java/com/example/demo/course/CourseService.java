@@ -1,8 +1,12 @@
 package com.example.demo.course;
 
+import com.example.demo.subcategory.Subcategory;
+import com.example.demo.subcategory.SubcategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -10,8 +14,11 @@ public class CourseService {
 
     private final CoursesRepository coursesRepository;
 
-    public CourseService(CoursesRepository coursesRepository) {
+    private final SubcategoryRepository subcategoryRepository;
+
+    public CourseService(CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository) {
         this.coursesRepository = coursesRepository;
+        this.subcategoryRepository = subcategoryRepository;
     }
 
     public void addCourse(CourseDTO courseDTO) {
@@ -40,4 +47,13 @@ public class CourseService {
                 .map(this::courseDTO)
                 .collect(Collectors.toList());
     }
+
+    public List<CourseDTO> findAllBySubcategory(Long subcategoryId) {
+        Optional<Subcategory> subcategory = subcategoryRepository.findById(subcategoryId);
+        return subcategory.map(value -> coursesRepository.findAllBySubcategory(value)
+                .stream()
+                .map(this::courseDTO)
+                .collect(Collectors.toList())).orElseGet(ArrayList::new);
+    }
+
 }

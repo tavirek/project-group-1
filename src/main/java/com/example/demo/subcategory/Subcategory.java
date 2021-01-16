@@ -1,8 +1,8 @@
 package com.example.demo.subcategory;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import com.example.demo.course.Course;
+
+import javax.persistence.*;
 
 @Entity
 public class Subcategory {
@@ -17,6 +17,10 @@ public class Subcategory {
     }
 
     public Subcategory() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
