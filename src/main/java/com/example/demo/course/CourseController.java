@@ -22,4 +22,7 @@ public class CourseController {
     public List<CourseDTO> allCourses(){
         return courseService.findAll();
     }
+
+    @GetMapping(path = "/bysubcategory/{subcategoryId}")
+    List<CourseDTO> findAllBySubcategory(@PathVariable Long subcategoryId) {return courseService.findAllBySubcategory(subcategoryId);}
 }
