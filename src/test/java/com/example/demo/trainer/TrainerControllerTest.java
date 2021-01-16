@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -72,4 +73,6 @@ class TrainerControllerTest {
                         .writeValueAsString(trener2)))
                 .andExpect(status().isConflict());
     }
+
+
 }

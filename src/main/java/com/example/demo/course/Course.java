@@ -1,15 +1,16 @@
 package com.example.demo.course;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.demo.subcategory.Subcategory;
+
+import javax.persistence.*;
 
 @Entity
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Subcategory subcategory;
     private String title;
     private int duration;
     private String description;
@@ -17,9 +18,18 @@ public class Course {
     public Course() {
     }
 
-    public Course(String title, int duration) {
+    public Course(String title, int duration, Subcategory subcategory) {
         this.title = title;
         this.duration = duration;
+        this.subcategory = subcategory;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 
     public String getTitle() {
