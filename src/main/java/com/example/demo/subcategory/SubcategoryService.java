@@ -38,6 +38,7 @@ public class SubcategoryService {
 
     private SubcategoryDTO subcategoryDTO(Subcategory subcategory) {
         SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+        subcategoryDTO.setId(subcategory.getId());
         subcategoryDTO.setName(subcategory.getName());
         subcategoryDTO.setDescription(subcategory.getDescription());
         return subcategoryDTO;

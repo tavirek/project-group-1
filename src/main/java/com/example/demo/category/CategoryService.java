@@ -30,6 +30,7 @@ public class CategoryService {
 
     private CategoryDTO categoryDTO(Category category) {
         CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setId(category.getId());
         categoryDTO.setName(category.getName());
         categoryDTO.setDescription(category.getDescription());
         return categoryDTO;

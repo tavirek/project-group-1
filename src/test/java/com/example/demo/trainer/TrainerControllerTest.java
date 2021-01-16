@@ -37,7 +37,7 @@ class TrainerControllerTest {
         trainerDTO.setName(trainerName);
         String trainerSurname = "nazwisko";
         trainerDTO.setSurname(trainerSurname);
-        long trainerPesel = 1234567876;
+        long trainerPesel = 12345678768L;
         trainerDTO.setPesel(trainerPesel);
 
         mockMvc.perform(post("/trainer").contentType(MediaType.APPLICATION_JSON)
@@ -58,8 +58,8 @@ class TrainerControllerTest {
     @Test
     public void shouldTheSameTrainerIsNotAdded() throws Exception {
         //given
-        TrainerDTO trener1 = new TrainerDTO("imie", "nazwisko", 1234567876L);
-        TrainerDTO trener2 = new TrainerDTO("imie2", "nazwisko2", 1234567876L);
+        TrainerDTO trener1 = new TrainerDTO("imie", "nazwisko", 12345678768L);
+        TrainerDTO trener2 = new TrainerDTO("imie2", "nazwisko2", 12345678768L);
 
         mockMvc.perform(post("/trainer")
                 .contentType(MediaType.APPLICATION_JSON)

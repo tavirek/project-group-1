@@ -23,7 +23,10 @@ public class TrainerService {
         }
     }
 
-
+    // TODO: do zrobienia sprawdzenie długości pesel
+    private boolean peselHasElevenNumbers(TrainerDTO trainerDTO){
+        return trainerDTO.getPesel().toString().length() == 11;
+    }
 
     private Trainer trainer(TrainerDTO trainerDTO) {
         Trainer trainer = new Trainer();
