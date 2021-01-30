@@ -1,6 +1,7 @@
 package com.example.demo.course;
 
 import com.example.demo.subcategory.Subcategory;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
@@ -17,4 +18,6 @@ public interface CoursesRepository extends Repository<Course, Long> {
     List<Course> findAll();
 
     Optional<Course> findById(long id);
+
+    long count();
 }

@@ -1,58 +1,27 @@
 package com.example.demo.sendMail;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
+import com.example.demo.course.CoursesRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
 
-@Service("EmailService")
-public class MailSenderService implements MailSender {
+public class MailSenderService {
 
-    private static final String NOREPLY_ADDRESS = "przykladowymail03@gmail.com";
+    private final CoursesRepository coursesRepository;
+    private final MailSender mailSender;
 
-    @Autowired
-    private JavaMailSender javaMailSender;
-
-    public void sendEmail(String to, String subject, String content) {
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(NOREPLY_ADDRESS);
-            message.setTo(to);
-            message.setSubject(subject);
-            message.setText(content);
-            javaMailSender.send(message);
-        } catch (MailException exception) {
-            exception.printStackTrace();
-        }
-
-//        @Override
-//        public void sendSimpleMessageUsingTemplate(String to,
-//                String subject,
-//                String ...templateModel) {
-//            String text = String.format(template.getText(), templateModel);
-//            sendSimpleMessage(to, subject, text);
-//        }
-
+    public MailSenderService(CoursesRepository coursesRepository, MailSender mailSender) {
+        this.coursesRepository = coursesRepository;
+        this.mailSender = mailSender;
     }
 
+    public void sendOffer(String adress, List<Long> ids) {
+        String mailContent = ids.stream().map(id -> coursesRepository.findById(id))
+                .filter(item -> item.isPresent())
+                .map(item -> item.get())
+                .map(item -> item.getTitle())
+                .collect(Collectors.joining("\n"));
+        mailSender.sendEmail(adress, "Oferta", mailContent);
 
-
-
-
-//    public void sendEmail(String to, String title, String content) {
-//        MimeMessage mail = javaMailSender.createMimeMessage();
-//        try {
-//            MimeMessageHelper helper = new MimeMessageHelper(mail, true);
-//            helper.setTo(to);
-//            helper.setReplyTo("przykladowymail03@gmail.com");
-//            helper.setFrom("przykladowymail03@gmail.com");
-//            helper.setSubject(title);
-//            helper.setText(content, true);
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//        }
-//        javaMailSender.send(mail);
-//    }
+    }
 }

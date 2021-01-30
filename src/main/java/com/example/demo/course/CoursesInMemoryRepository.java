@@ -33,6 +33,11 @@ public class CoursesInMemoryRepository implements CoursesRepository {
         return courses.values().stream().filter(course -> course.getId().equals(id)).findFirst();
     }
 
+    @Override
+    public long count() {
+        return courses.values().size();
+    }
+
 
 }
 

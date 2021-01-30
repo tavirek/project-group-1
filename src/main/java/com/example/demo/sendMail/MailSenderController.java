@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sendmail")
 public class MailSenderController {
 
-
+//    obiekt w którego sklad wchodzi lista id i adres odbiorcy
+    // metoda która przyjmie ten obiekt postem i wywola serwis do wysyłania maili
 
 }
