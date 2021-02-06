@@ -1,7 +1,7 @@
-package com.example.demo.contollers;
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryDTO;
-import com.example.demo.category.CategoryRepository;
+package com.example.demo.training;
+import com.example.demo.model.Category;
+import com.example.demo.training.CategoryDTO;
+import com.example.demo.training.CategoryRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

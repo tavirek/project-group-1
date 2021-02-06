@@ -1,4 +1,4 @@
-package com.example.demo.subcategory;
+package com.example.demo.training;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.example.demo.course;
+package com.example.demo.training;
 
-import com.example.demo.subcategory.Subcategory;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.demo.model.Course;
+import com.example.demo.model.Subcategory;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 

@@ -1,18 +1,33 @@
-package com.example.demo.course;
+package com.example.demo.model;
 
-public class CourseDTO {
+import javax.persistence.*;
 
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Subcategory subcategory;
     private String title;
     private int duration;
     private String description;
 
-    public CourseDTO(String title, int duration) {
-        this.title = title;
-        this.duration = duration;
+    public Course() {
     }
 
-    public CourseDTO() {
+    public Course(String title, int duration, Subcategory subcategory) {
+        this.title = title;
+        this.duration = duration;
+        this.subcategory = subcategory;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 
     public Long getId() {
@@ -47,6 +62,7 @@ public class CourseDTO {
         this.description = description;
     }
 
+    @Override
     public String toString() {
         return "Courses{" +
                 "id=" + id +

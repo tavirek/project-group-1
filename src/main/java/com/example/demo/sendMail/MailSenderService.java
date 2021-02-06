@@ -1,6 +1,7 @@
 package com.example.demo.sendMail;
 
-import com.example.demo.course.CoursesRepository;
+import com.example.demo.training.DefaultTrainingFacade;
+import com.example.demo.training.TrainingFacade;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -9,16 +10,16 @@ import java.util.stream.Collectors;
 @Component
 public class MailSenderService {
 
-    private final CoursesRepository coursesRepository;
+    private final TrainingFacade trainingFacade;
     private final MailSender mailSender;
 
-    public MailSenderService(CoursesRepository coursesRepository, MailSender mailSender) {
-        this.coursesRepository = coursesRepository;
+    public MailSenderService(TrainingFacade trainingFacade, MailSender mailSender) {
+        this.trainingFacade = trainingFacade;
         this.mailSender = mailSender;
     }
 
     public void sendOffer(String adress, List<Long> ids) {
-        String mailContent = ids.stream().map(id -> coursesRepository.findById(id))
+        String mailContent = ids.stream().map(id -> trainingFacade.findCourseById(id))
                 .filter(item -> item.isPresent())
                 .map(item -> item.get())
                 .map(item -> item.getTitle())

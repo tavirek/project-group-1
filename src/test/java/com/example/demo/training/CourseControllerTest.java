@@ -1,8 +1,8 @@
-package com.example.demo.contollers;
+package com.example.demo.training;
 
-import com.example.demo.course.Course;
-import com.example.demo.course.CourseDTO;
-import com.example.demo.course.CoursesRepository;
+import com.example.demo.model.Course;
+import com.example.demo.training.CourseDTO;
+import com.example.demo.training.CoursesRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

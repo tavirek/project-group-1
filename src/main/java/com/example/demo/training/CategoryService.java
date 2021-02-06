@@ -1,17 +1,18 @@
-package com.example.demo.category;
+package com.example.demo.training;
+import com.example.demo.model.Category;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CategoryService {
+class CategoryService {
     private final CategoryRepository categoryRepository;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
-    public boolean addCategory(CategoryDTO categoryDTO) {
+    boolean addCategory(CategoryDTO categoryDTO) {
         if(categoryDTO.getDescription().length() < 50 ) {
             categoryRepository.save(category(categoryDTO));
             return true;
@@ -36,7 +37,7 @@ public class CategoryService {
         return categoryDTO;
     }
 
-    public List<CategoryDTO> findAll() {
+    List<CategoryDTO> findAll() {
         List<Category> all = categoryRepository.findAll();
         return all.stream()
                 .map(this::categoryDTO)

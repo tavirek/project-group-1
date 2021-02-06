@@ -1,5 +1,7 @@
-package com.example.demo.course;
-import com.example.demo.subcategory.Subcategory;
+package com.example.demo.training;
+import com.example.demo.model.Course;
+import com.example.demo.model.Subcategory;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;

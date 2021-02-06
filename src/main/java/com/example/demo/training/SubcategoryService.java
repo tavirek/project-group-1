@@ -1,25 +1,25 @@
-package com.example.demo.subcategory;
+package com.example.demo.training;
 
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryRepository;
+import com.example.demo.model.Category;
+import com.example.demo.model.Subcategory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class SubcategoryService {
+class SubcategoryService {
     private final SubcategoryRepository subcategoryRepository;
 
     private final CategoryRepository categoryRepository;
 
-    public SubcategoryService(SubcategoryRepository subcategoryRepository, CategoryRepository categoryRepository) {
+    SubcategoryService(SubcategoryRepository subcategoryRepository, CategoryRepository categoryRepository) {
         this.subcategoryRepository = subcategoryRepository;
         this.categoryRepository = categoryRepository;
     }
 
 
-    public boolean addSubcategory(SubcategoryDTO subcategoryDTO) {
+    boolean addSubcategory(SubcategoryDTO subcategoryDTO) {
         if (subcategoryDTO.getDescription().length() < 200) {
             subcategoryRepository.save(subcategory(subcategoryDTO));
             return true;
@@ -44,14 +44,14 @@ public class SubcategoryService {
         return subcategoryDTO;
     }
 
-    public List<SubcategoryDTO> findAll() {
+    List<SubcategoryDTO> findAll() {
         List<Subcategory> all = subcategoryRepository.findAll();
         return all.stream()
                 .map(this::subcategoryDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<SubcategoryDTO> findAllByCategory(Long categoryId) {
+    List<SubcategoryDTO> findAllByCategory(Long categoryId) {
         Optional<Category> category = categoryRepository.findById(categoryId);
         return category.map(value -> subcategoryRepository.findAllByCategory(value)
                 .stream()

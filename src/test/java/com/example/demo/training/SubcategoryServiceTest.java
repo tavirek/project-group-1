@@ -1,5 +1,9 @@
-package com.example.demo.subcategory;
+package com.example.demo.training;
 
+import com.example.demo.model.Subcategory;
+import com.example.demo.training.SubcategoryDTO;
+import com.example.demo.training.SubcategoryRepository;
+import com.example.demo.training.SubcategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

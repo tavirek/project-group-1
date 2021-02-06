@@ -1,5 +1,9 @@
-package com.example.demo.category;
+package com.example.demo.training;
 
+import com.example.demo.model.Category;
+import com.example.demo.training.CategoryDTO;
+import com.example.demo.training.CategoryRepository;
+import com.example.demo.training.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

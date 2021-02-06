@@ -1,12 +1,12 @@
-package com.example.demo.course;
+package com.example.demo.training;
 
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryRepository;
-import com.example.demo.category.CategoryService;
-import com.example.demo.subcategory.Subcategory;
-import com.example.demo.subcategory.SubcategoryDTO;
-import com.example.demo.subcategory.SubcategoryRepository;
-import com.example.demo.subcategory.SubcategoryService;
+import com.example.demo.model.Category;
+import com.example.demo.model.Course;
+import com.example.demo.training.*;
+import com.example.demo.model.Subcategory;
+import com.example.demo.training.SubcategoryDTO;
+import com.example.demo.training.SubcategoryRepository;
+import com.example.demo.training.SubcategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

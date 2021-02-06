@@ -1,4 +1,4 @@
-package com.example.demo.course;
+package com.example.demo.training;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/course")
-public class CourseController {
+class CourseController {
     private final CourseService courseService;
 
-    public CourseController(CourseService courseService) {
+    CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
 
@@ -19,7 +19,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<CourseDTO> allCourses(){
+    List<CourseDTO> allCourses(){
         return courseService.findAll();
     }
 

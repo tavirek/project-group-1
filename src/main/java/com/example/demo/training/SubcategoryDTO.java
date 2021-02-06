@@ -1,15 +1,15 @@
-package com.example.demo.subcategory;
+package com.example.demo.training;
 
-public class SubcategoryDTO {
+class SubcategoryDTO {
     private Long id;
     private String name;
     private String description;
 
-    public SubcategoryDTO(String name) {
+    SubcategoryDTO(String name) {
         this.name = name;
     }
 
-    public SubcategoryDTO() {
+    SubcategoryDTO() {
     }
 
     public Long getId() {

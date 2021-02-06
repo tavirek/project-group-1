@@ -1,13 +1,12 @@
 package com.example.demo.sendMail;
 
-import com.example.demo.category.Category;
-import com.example.demo.course.Course;
-import com.example.demo.course.CoursesInMemoryRepository;
-import com.example.demo.course.CoursesRepository;
-import com.example.demo.subcategory.Subcategory;
+import com.example.demo.model.Category;
+import com.example.demo.model.Course;
+import com.example.demo.training.CoursesInMemoryRepository;
+import com.example.demo.training.CoursesRepository;
+import com.example.demo.model.Subcategory;
+import com.example.demo.training.TrainingFacade;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,8 @@ class MailSenderServiceTest {
 
     private CoursesRepository coursesRepository = new CoursesInMemoryRepository();
     private TestMailSender mailSender = new TestMailSender();
-    private MailSenderService mailSenderService = new MailSenderService(coursesRepository, mailSender) {};
+    private TrainingFacade trainingFacade = new InMemoryTrainingFacade(coursesRepository);
+    private MailSenderService mailSenderService = new MailSenderService(trainingFacade, mailSender) {};
 
     @Test
     public void shouldMailWasSendWithCorrectData() {

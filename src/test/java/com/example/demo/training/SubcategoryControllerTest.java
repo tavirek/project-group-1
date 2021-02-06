@@ -1,8 +1,8 @@
-package com.example.demo.subcategory;
+package com.example.demo.training;
 
-import com.example.demo.subcategory.Subcategory;
-import com.example.demo.subcategory.SubcategoryDTO;
-import com.example.demo.subcategory.SubcategoryRepository;
+import com.example.demo.model.Subcategory;
+import com.example.demo.training.SubcategoryDTO;
+import com.example.demo.training.SubcategoryRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

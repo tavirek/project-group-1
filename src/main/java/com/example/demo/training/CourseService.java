@@ -1,7 +1,7 @@
-package com.example.demo.course;
+package com.example.demo.training;
 
-import com.example.demo.subcategory.Subcategory;
-import com.example.demo.subcategory.SubcategoryRepository;
+import com.example.demo.model.Course;
+import com.example.demo.model.Subcategory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,18 +10,18 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class CourseService {
+class CourseService {
 
     private final CoursesRepository coursesRepository;
 
     private final SubcategoryRepository subcategoryRepository;
 
-    public CourseService(CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository) {
+    CourseService(CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository) {
         this.coursesRepository = coursesRepository;
         this.subcategoryRepository = subcategoryRepository;
     }
 
-    public void addCourse(CourseDTO courseDTO) {
+    void addCourse(CourseDTO courseDTO) {
         coursesRepository.save(course(courseDTO));
     }
 
@@ -42,14 +42,14 @@ public class CourseService {
         return courseDTO;
     }
 
-    public List<CourseDTO> findAll() {
+    List<CourseDTO> findAll() {
         List<Course> all = coursesRepository.findAll();
         return all.stream()
                 .map(this::courseDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<CourseDTO> findAllBySubcategory(Long subcategoryId) {
+    List<CourseDTO> findAllBySubcategory(Long subcategoryId) {
         Optional<Subcategory> subcategory = subcategoryRepository.findById(subcategoryId);
         return subcategory.map(value -> coursesRepository.findAllBySubcategory(value)
                 .stream()

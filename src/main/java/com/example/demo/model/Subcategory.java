@@ -1,6 +1,6 @@
-package com.example.demo.subcategory;
+package com.example.demo.model;
 
-import com.example.demo.category.Category;
+import com.example.demo.model.Category;
 
 import javax.persistence.*;
 
