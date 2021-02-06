@@ -1,10 +1,12 @@
 package com.example.demo.sendMail;
 
 import com.example.demo.course.CoursesRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class MailSenderService {
 
     private final CoursesRepository coursesRepository;
