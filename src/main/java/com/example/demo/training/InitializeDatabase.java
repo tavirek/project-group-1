@@ -116,5 +116,37 @@ public class InitializeDatabase implements CommandLineRunner {
         coursesRepository.save(course412);
         coursesRepository.save(course413);
 
+        Course course221 = new Course(" Podstawowy", 10, subcategory22);
+        Course course222 = new Course(" Sredni", 20, subcategory22);
+        Course course223 = new Course(" Zaawansowany", 30, subcategory22);
+
+        Course course231 = new Course(" Podstawowy", 10, subcategory23);
+        Course course232 = new Course(" Sredni", 20, subcategory23);
+        Course course233 = new Course(" Zaawansowany", 30, subcategory23);
+
+        Course course321 = new Course(" Podstawowy", 10, subcategory32);
+        Course course322 = new Course(" Sredni", 20, subcategory32);
+        Course course323 = new Course(" Zaawansowany", 30, subcategory32);
+
+        Course course421 = new Course(" Podstawowy", 10, subcategory42);
+        Course course422 = new Course(" Sredni", 20, subcategory42);
+        Course course423 = new Course(" Zaawansowany", 30, subcategory42);
+
+        coursesRepository.save(course221);
+        coursesRepository.save(course222);
+        coursesRepository.save(course223);
+
+        coursesRepository.save(course231);
+        coursesRepository.save(course232);
+        coursesRepository.save(course233);
+
+        coursesRepository.save(course321);
+        coursesRepository.save(course322);
+        coursesRepository.save(course323);
+
+        coursesRepository.save(course421);
+        coursesRepository.save(course422);
+        coursesRepository.save(course423);
+
     }
 }
