@@ -64,19 +64,19 @@ public class InitializeDatabase implements CommandLineRunner {
         subcategoryRepository.save(subcategory42);
 
         Course course111 = new Course("Java Podstawowy", 10, subcategory11);
-        Course course112 = new Course("Java Sredniozaawansowany", 20, subcategory11);
+        Course course112 = new Course("Java Sredni", 20, subcategory11);
         Course course113 = new Course("Java Zaawansowany", 30, subcategory11);
 
         Course course121 = new Course("JS Podstawowy", 10, subcategory12);
-        Course course122 = new Course("JS Sredniozaawansowany", 20, subcategory12);
+        Course course122 = new Course("JS Sredni", 20, subcategory12);
         Course course123 = new Course("JS Zaawansowany", 30, subcategory12);
 
         Course course131 = new Course("C# Podstawowy", 10, subcategory13);
-        Course course132 = new Course("C# Sredniozaawansowany", 20, subcategory13);
+        Course course132 = new Course("C# Sredni", 20, subcategory13);
         Course course133 = new Course("C# Zaawansowany", 30, subcategory13);
 
         Course course141 = new Course("DevOps Podstawowy", 10, subcategory14);
-        Course course142 = new Course("DevOps Sredniozaawansowany", 20, subcategory14);
+        Course course142 = new Course("DevOps Sredni", 20, subcategory14);
         Course course143 = new Course("Devops Zaawansowany", 30, subcategory14);
 
         coursesRepository.save(course111);
@@ -91,6 +91,30 @@ public class InitializeDatabase implements CommandLineRunner {
         coursesRepository.save(course141);
         coursesRepository.save(course142);
         coursesRepository.save(course143);
+
+        Course course211 = new Course(" Podstawowy", 10, subcategory21);
+        Course course212 = new Course(" Sredni", 20, subcategory21);
+        Course course213 = new Course(" Zaawansowany", 30, subcategory21);
+
+        Course course311 = new Course(" Podstawowy", 10, subcategory31);
+        Course course312 = new Course(" Sredni", 20, subcategory31);
+        Course course313 = new Course(" Zaawansowany", 30, subcategory31);
+
+        Course course411 = new Course(" Podstawowy", 10, subcategory41);
+        Course course412 = new Course(" Sredni", 20, subcategory41);
+        Course course413 = new Course(" Zaawansowany", 30, subcategory41);
+
+        coursesRepository.save(course211);
+        coursesRepository.save(course212);
+        coursesRepository.save(course213);
+
+        coursesRepository.save(course311);
+        coursesRepository.save(course312);
+        coursesRepository.save(course313);
+
+        coursesRepository.save(course411);
+        coursesRepository.save(course412);
+        coursesRepository.save(course413);
 
     }
 }
