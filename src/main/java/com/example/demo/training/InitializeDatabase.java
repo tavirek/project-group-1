@@ -63,21 +63,21 @@ public class InitializeDatabase implements CommandLineRunner {
         subcategoryRepository.save(subcategory41);
         subcategoryRepository.save(subcategory42);
 
-        Course course111 = new Course("Podstawowy", 10, subcategory11);
-        Course course112 = new Course("Sredniozaawansowany", 20, subcategory11);
-        Course course113 = new Course("Zaawansowany", 30, subcategory11);
+        Course course111 = new Course("Java Podstawowy", 10, subcategory11);
+        Course course112 = new Course("Java Sredniozaawansowany", 20, subcategory11);
+        Course course113 = new Course("Java Zaawansowany", 30, subcategory11);
 
-        Course course121 = new Course("Podstawowy", 10, subcategory12);
-        Course course122 = new Course("Sredniozaawansowany", 20, subcategory12);
-        Course course123 = new Course("Zaawansowany", 30, subcategory12);
+        Course course121 = new Course("JS Podstawowy", 10, subcategory12);
+        Course course122 = new Course("JS Sredniozaawansowany", 20, subcategory12);
+        Course course123 = new Course("JS Zaawansowany", 30, subcategory12);
 
-        Course course131 = new Course("Podstawowy", 10, subcategory13);
-        Course course132 = new Course("Sredniozaawansowany", 20, subcategory13);
-        Course course133 = new Course("Zaawansowany", 30, subcategory13);
+        Course course131 = new Course("C# Podstawowy", 10, subcategory13);
+        Course course132 = new Course("C# Sredniozaawansowany", 20, subcategory13);
+        Course course133 = new Course("C# Zaawansowany", 30, subcategory13);
 
-        Course course141 = new Course("Podstawowy", 10, subcategory14);
-        Course course142 = new Course("Sredniozaawansowany", 20, subcategory14);
-        Course course143 = new Course("Zaawansowany", 30, subcategory14);
+        Course course141 = new Course("DevOps Podstawowy", 10, subcategory14);
+        Course course142 = new Course("DevOps Sredniozaawansowany", 20, subcategory14);
+        Course course143 = new Course("Devops Zaawansowany", 30, subcategory14);
 
         coursesRepository.save(course111);
         coursesRepository.save(course112);
