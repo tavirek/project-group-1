@@ -24,7 +24,16 @@ public class MailSenderService {
                 .map(item -> item.get())
                 .map(item -> item.getTitle())
                 .collect(Collectors.joining("\n"));
-        mailSender.sendEmail(adress, "Oferta", mailContent);
+        mailSender.sendEmail(adress, "Oferta", "Cześć!\n" +
+                "\n" +
+                "Dziękujemy za zainteresowanie ofertą naszych kursów. \n" +
+                "Poniższej szczegóły kursów, które Cię interesują:\n" +
+                "\n" +
+                mailContent +
+                "\n" +
+                "\n" +
+                "Pozdrawiamy, \n" +
+                "Zespół INQOO");
 
     }
 }
